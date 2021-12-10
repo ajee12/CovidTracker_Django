@@ -1,0 +1,148 @@
+{% extends 'covid/data.html' %} {% load humanize %} {% block content %}
+
+<div class="container mt-2">
+  <h2>Kasus Covid-19 Nasional</h2>
+  <div class="row">
+    <div class="col-lg-4 col-8">
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{positif|intcomma}}</h3>
+          <p>Positif</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-virus"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-8">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{sembuh|intcomma}}</h3>
+
+          <p>Sembuh</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-star-of-life"></i>
+        </div>
+      </div>
+    </div>
+    <!-- ./col -->
+
+    <div class="col-lg-4 col-8">
+      <div class="small-box bg-dark">
+        <div class="inner">
+          <h3>{{deaths|intcomma}}</h3>
+          <p>Meninggal</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-skull-crossbones"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-2">
+    <h2>Vaksinasi COVID-19 Nasional (update : {{update}})</h2>
+    <div class="row">
+      <div class="col-lg-4 col-8">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>{{total|intcomma}}</h3>
+            <p>Sasaran Vaksinasi</p>
+          </div>
+          <div class="icon"></div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-8">
+        <div class="small-box bg-white">
+          <div class="inner">
+            <h3>{{sdmk|intcomma}}</h3>
+
+            <p>Sasaran Vaksinasi Petugas Kesehatan</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-plus"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-8">
+        <!-- small box -->
+        <div class="small-box bg-dark">
+          <div class="inner">
+            <h3>{{lansia|intcomma}}</h3>
+
+            <p>Sasaran Vaksinasi Lansia</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-8">
+        <div class="small-box bg-secondary">
+          <div class="inner">
+            <h3>{{publik|intcomma}}</h3>
+
+            <p>Sasaran Vaksinasi Petugas Publik</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-8">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>{{vak1|intcomma}}</h3>
+
+            <p>Vaksin 1</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-8">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{vak2|intcomma}}</h3>
+
+            <p>Vaksin 2</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="mt-5">Stats Covid-19 Nasional</h3>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Provinsi</th>
+            <th scope="col">Kasus</th>
+            <th scope="col">Dirawat</th>
+            <th scope="col">Sembuh</th>
+            <th scope="col">Meninggal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in data%}
+          <tr>
+            <th scope="row">{{data.provin}}</th>
+            <td>{{data.kasus|intcomma}}</td>
+            <td>{{data.dirawat|intcomma}}</td>
+            <td>{{data.sembuh|intcomma}}</td>
+            <td>{{data.meninggal|intcomma}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
