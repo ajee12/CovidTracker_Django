@@ -1,89 +1,100 @@
-{% extends 'covid/data.html' %}
-{% load humanize %}
-{% block content %}
-<div class="container mt-2">
-    <h1>Global</h1>
-      <div class="row">
-          <div class="col-lg-4 col-8">
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>{{terkonfirmasi|intcomma}} </h3>
-                <p>Confirmed</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-virus"></i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-8">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>{{terrecovered|intcomma}}</h3>
-  
-                  <p>Recovered</p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-star-of-life"></i>
-                </div>
-             
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-4 col-8">
-              <!-- small box -->
-              <div class="small-box bg-dark">
-                <div class="inner">
-                  <h3>{{termeninggal|intcomma}}</h3>
-                  <p>Deaths</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-skull-crossbones"></i>
-             </div>
-             </div>   
-          </div>
-        
-  </div>
-  <!---------------------------------------->
+{% extends 'covid/data.html' %} {% load humanize %} {% block content %}
+<div class="container mt-4">
+    <h2>Global</h2>
+    <div class="row text-left row mx-lg-n4 mx-n4 ">
+        <div class="col-sm-4 px-lg-2 mb-2">
 
-    <div class="col-xl-6 mx-auto">
-      <h1 class="mb-3 mt-5"> COVID-19 Statistics Checker</h1>
+            <div class="card statistics case__positive ">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8 total-case">
+                            {{terkonfirmasi | intcomma}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 case-category">
+                            Confirmed
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 px-lg-2 mb-3">
+            <div class="card statistics case__recovery">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8 total-case ">
+                            {{terrecovered | intcomma }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 case-category">
+                            Recovered
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 px-lg-2">
+            <div class="card statistics case__treatment ">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8 total-case ">
+                            {{termeninggal | intcomma}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 case-category">
+                            Deaths
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-      <form method="get" name="country">
+    <div class="note text-left mx-lg-n4 mx-n2">
+        Pembaharuan terakhir: {{lastupdate}}<br>
+    </div>
+</div>
+<!---------------------------------------->
+
+<div class="col-xl-5 mx-auto">
+    <h1 class="mb-2 mt-4"> COVID-19 Statistics Checker</h1>
+</div>
+<div class="col-md-10 col-lg-10 col-xl-8 mx-auto">
+    <form method="get" name="country">
         <div class="form-row">
-          <div class="col-12 col-md-9 mb-2 mb-md-0">
-            <input  type="search" class="form-control form-control-lg" placeholder="Indonesia" name="country" required = required>
-          </div>
-          <div class="col-12 col-md-3">
-            <button type="submit" class="btn btn-block btn-lg btn-dark">Search</button>
-            <br>
-          </div>
-        </div>  
-      </div>
-    </form>
-    {% if country != confirmed %}
-      <h2>Statistics in {{ country }}</h2>
+            <input type="search" class="col-xl-10 col-md-8 mb-2 " placeholder="Indonesia" name="country" required=r equired>
+            <button type="submit" class="btn-dark">Search</button>
+        </div>
+</div>
+</form>
+</div>
+{% if country != confirmed %}
+<div class="container mt-4">
+    <h2>Statistics in {{ country }}</h2>
 
-  <table style="background: white" class="table table-hover">
-    <thead>
-      <tr>
-        <th class="text-center" scope="col">Confirmed Cases</th>
-        <th class="text-center"  scope="col">Recovered</th>
-        <th class="text-center"  scope="col">Death(s)</th>
-        <th class="text-center"  scope="col">Last Update</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th class="text-center" scope="row">{{ konfirmasi|intcomma}}</th>
-        <td class="text-center" >{{ recovered|intcomma}}</td>
-        <td class="text-center" >{{ meninggal|intcomma}}</td>
-        <td class="text-center" >{{ lastupdate|intcomma }}</td>
-      </tr>
+    <table style="background: white" class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center" scope="col">Confirmed Cases</th>
+                <th class="text-center" scope="col">Recovered</th>
+                <th class="text-center" scope="col">Death(s)</th>
+                <th class="text-center" scope="col">Last Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="text-center" scope="row">{{ konfirmasi|intcomma}}</th>
+                <td class="text-center">{{ recovered|intcomma}}</td>
+                <td class="text-center">{{ meninggal|intcomma}}</td>
+                <td class="text-center">{{ lastupdate|intcomma }}</td>
+            </tr>
 
-    </tbody>
-  </table>
-  </div>
-  {% endif %}
-{% endblock %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endif %} {% endblock %}

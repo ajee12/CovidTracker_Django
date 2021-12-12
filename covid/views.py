@@ -50,6 +50,7 @@ def data(request):
                     'terkonfirmasi' : world_kon['value'],
                     'terrecovered' : world_re['value'],
                     'termeninggal' : world_de['value'],
+                    'lastupdate':data['lastUpdate'],
                 })
               
                 
@@ -61,7 +62,7 @@ def data(request):
         'terkonfirmasi' : world_kon['value'],
         'terrecovered' : world_re['value'],
         'termeninggal' : world_de['value'],
-        'update' :data['lastUpdate'],
+        'lastupdate' :data['lastUpdate'],
       
         
 
